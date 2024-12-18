@@ -174,7 +174,7 @@ const SocialLink = styled.a`
 `
 
 const Contact: React.FC = () => {
-  const { t, i18n } = useTranslation()
+  const { t } = useTranslation()
   const location = { lat: 32.0132, lng: 34.7506 } // Coordinates for יוסף טל 92, בת ים
 
   const mapOptions = {

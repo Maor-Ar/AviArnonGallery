@@ -10,7 +10,7 @@ export const firebaseConfig = {
 };
 
 import { initializeApp } from 'firebase/app'
-import { getFirestore, connectFirestoreEmulator } from 'firebase/firestore'
+import { getFirestore } from 'firebase/firestore'
 import { getAnalytics } from 'firebase/analytics'
 import { getStorage } from 'firebase/storage'
 

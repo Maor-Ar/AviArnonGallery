@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import { motion, AnimatePresence } from 'framer-motion'
 import { useTranslation } from 'react-i18next'
 import { Link } from 'react-scroll'
-import { FiMenu, FiX } from 'react-icons/fi'
+import { FiX } from 'react-icons/fi'
 
 const Nav = styled(motion.nav)<{ isOpen: boolean }>`
   display: flex;
