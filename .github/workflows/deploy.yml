@@ -1,0 +1,57 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout source repository
+        uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build
+        env:
+          VITE_GOOGLE_MAPS_API_KEY: ${{ secrets.GOOGLE_MAPS_API_KEY }}
+          VITE_FIREBASE_API_KEY: ${{ secrets.FIREBASE_API_KEY }}
+          VITE_FIREBASE_AUTH_DOMAIN: ${{ secrets.FIREBASE_AUTH_DOMAIN }}
+          VITE_FIREBASE_PROJECT_ID: ${{ secrets.FIREBASE_PROJECT_ID }}
+          VITE_FIREBASE_STORAGE_BUCKET: ${{ secrets.FIREBASE_STORAGE_BUCKET }}
+          VITE_FIREBASE_MESSAGING_SENDER_ID: ${{ secrets.FIREBASE_MESSAGING_SENDER_ID }}
+          VITE_FIREBASE_APP_ID: ${{ secrets.FIREBASE_APP_ID }}
+          VITE_CONTROL_PANEL_KEY: ${{ secrets.CONTROL_PANEL_KEY }}
+        run: npm run build
+
+      - name: Checkout target repository
+        uses: actions/checkout@v3
+        with:
+          repository: Maor-Ar/Maor-Ar.github.io
+          token: ${{ secrets.PERSONAL_TOKEN }}
+          path: target-repo
+
+      - name: Copy build to target repository
+        run: |
+          rm -rf target-repo/AviArnonGallery
+          mkdir -p target-repo/AviArnonGallery
+          cp -r dist/* target-repo/AviArnonGallery/
+
+      - name: Commit and push changes
+        run: |
+          cd target-repo
+          git config user.name github-actions
+          git config user.email github-actions@github.com
+          git add AviArnonGallery
+          git commit -m "Update AviArnonGallery" || echo "No changes to commit"
+          git push
