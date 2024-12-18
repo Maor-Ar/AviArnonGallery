@@ -1,29 +1,30 @@
 // Firebase configuration
-export const firebaseConfig = {
-  apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
-  authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
-  projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID,
-  storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET,
-  messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID,
-  appId: import.meta.env.VITE_FIREBASE_APP_ID,
-  measurementId: import.meta.env.VITE_FIREBASE_MEASUREMENT_ID
-};
-
 import { initializeApp } from 'firebase/app'
 import { getFirestore } from 'firebase/firestore'
 import { getAnalytics } from 'firebase/analytics'
 import { getStorage } from 'firebase/storage'
+import { env } from './env'
+
+export const firebaseConfig = {
+  apiKey: env.FIREBASE_API_KEY,
+  authDomain: env.FIREBASE_AUTH_DOMAIN,
+  projectId: env.FIREBASE_PROJECT_ID,
+  storageBucket: env.FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: env.FIREBASE_MESSAGING_SENDER_ID,
+  appId: env.FIREBASE_APP_ID,
+  measurementId: env.FIREBASE_MEASUREMENT_ID
+};
 
 // Debug logging
 console.log('Environment Variables:', {
-  VITE_FIREBASE_API_KEY: import.meta.env.VITE_FIREBASE_API_KEY ? 'exists' : 'missing',
-  VITE_FIREBASE_AUTH_DOMAIN: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN ? 'exists' : 'missing',
-  VITE_FIREBASE_PROJECT_ID: import.meta.env.VITE_FIREBASE_PROJECT_ID ? 'exists' : 'missing',
-  VITE_FIREBASE_STORAGE_BUCKET: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET ? 'exists' : 'missing',
-  VITE_FIREBASE_MESSAGING_SENDER_ID: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID ? 'exists' : 'missing',
-  VITE_FIREBASE_APP_ID: import.meta.env.VITE_FIREBASE_APP_ID ? 'exists' : 'missing',
-  VITE_FIREBASE_MEASUREMENT_ID: import.meta.env.VITE_FIREBASE_MEASUREMENT_ID ? 'exists' : 'missing',
-  VITE_CONTROL_PANEL_KEY: import.meta.env.VITE_CONTROL_PANEL_KEY ? 'exists' : 'missing'
+  FIREBASE_API_KEY: env.FIREBASE_API_KEY ? 'exists' : 'missing',
+  FIREBASE_AUTH_DOMAIN: env.FIREBASE_AUTH_DOMAIN ? 'exists' : 'missing',
+  FIREBASE_PROJECT_ID: env.FIREBASE_PROJECT_ID ? 'exists' : 'missing',
+  FIREBASE_STORAGE_BUCKET: env.FIREBASE_STORAGE_BUCKET ? 'exists' : 'missing',
+  FIREBASE_MESSAGING_SENDER_ID: env.FIREBASE_MESSAGING_SENDER_ID ? 'exists' : 'missing',
+  FIREBASE_APP_ID: env.FIREBASE_APP_ID ? 'exists' : 'missing',
+  FIREBASE_MEASUREMENT_ID: env.FIREBASE_MEASUREMENT_ID ? 'exists' : 'missing',
+  CONTROL_PANEL_KEY: env.CONTROL_PANEL_KEY ? 'exists' : 'missing'
 });
 
 console.log('Firebase Config:', {
@@ -57,7 +58,7 @@ export { analytics }
 export default app
 
 // Control Panel access key
-export const CONTROL_PANEL_ACCESS_KEY = import.meta.env.VITE_CONTROL_PANEL_KEY || 'mock-control-panel-key-123';
+export const CONTROL_PANEL_ACCESS_KEY = env.CONTROL_PANEL_KEY || 'mock-control-panel-key-123';
 
 // Gallery configuration
 export const GALLERY_PAGE_SIZE = 12;
