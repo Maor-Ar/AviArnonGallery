@@ -89,7 +89,7 @@ const About: React.FC = () => {
             animate={inView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.6 }}
           >
-            <img src="/images/avi-arnon.jpg" alt={t('about.imageAlt')} />
+            <img src="/AviArnonGallery/images/avi-arnon.jpg" alt={t('about.imageAlt')} />
           </ImageContainer>
         </Content>
       </Container>

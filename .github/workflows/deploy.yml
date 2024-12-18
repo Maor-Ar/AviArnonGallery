@@ -52,6 +52,7 @@ jobs:
           rm -rf target-repo/AviArnonGallery
           mkdir -p target-repo/AviArnonGallery
           cp -r dist/* target-repo/AviArnonGallery/
+          cp -r public/* target-repo/AviArnonGallery/
 
       - name: Commit and push changes
         run: |

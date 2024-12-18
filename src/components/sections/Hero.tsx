@@ -110,7 +110,7 @@ const Hero: React.FC = () => {
   return (
     <HeroSection id="hero" ref={ref}>
       <VideoBackground autoPlay muted loop playsInline>
-        <source src="/videos/hero-background.mp4" type="video/mp4" />
+        <source src="/AviArnonGallery/videos/hero-background.mp4" type="video/mp4" />
       </VideoBackground>
       <Overlay />
       <Content>
