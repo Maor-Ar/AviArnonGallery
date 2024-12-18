@@ -14,6 +14,18 @@ import { getFirestore } from 'firebase/firestore'
 import { getAnalytics } from 'firebase/analytics'
 import { getStorage } from 'firebase/storage'
 
+// Debug logging
+console.log('Environment Variables:', {
+  VITE_FIREBASE_API_KEY: import.meta.env.VITE_FIREBASE_API_KEY ? 'exists' : 'missing',
+  VITE_FIREBASE_AUTH_DOMAIN: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN ? 'exists' : 'missing',
+  VITE_FIREBASE_PROJECT_ID: import.meta.env.VITE_FIREBASE_PROJECT_ID ? 'exists' : 'missing',
+  VITE_FIREBASE_STORAGE_BUCKET: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET ? 'exists' : 'missing',
+  VITE_FIREBASE_MESSAGING_SENDER_ID: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID ? 'exists' : 'missing',
+  VITE_FIREBASE_APP_ID: import.meta.env.VITE_FIREBASE_APP_ID ? 'exists' : 'missing',
+  VITE_FIREBASE_MEASUREMENT_ID: import.meta.env.VITE_FIREBASE_MEASUREMENT_ID ? 'exists' : 'missing',
+  VITE_CONTROL_PANEL_KEY: import.meta.env.VITE_CONTROL_PANEL_KEY ? 'exists' : 'missing'
+});
+
 console.log('Firebase Config:', {
   ...firebaseConfig,
   apiKey: firebaseConfig.apiKey ? '**exists**' : '**missing**',
