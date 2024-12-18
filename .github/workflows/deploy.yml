@@ -22,6 +22,11 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      - name: Debug env vars
+        run: |
+          echo "Checking for environment variables (not showing values for security):"
+          env | grep -i VITE_ | cut -d= -f1
+
       - name: Build
         env:
           VITE_GOOGLE_MAPS_API_KEY: ${{ secrets.GOOGLE_MAPS_API_KEY }}
