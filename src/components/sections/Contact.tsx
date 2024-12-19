@@ -224,7 +224,7 @@ const Contact: React.FC = () => {
             </InfoItem>
             <WhatsAppButton href={whatsappUrl} target="_blank" rel="noopener noreferrer">
               <FiMessageCircle />
-              {t('contact.whatsapp')}
+              {t('contact.whatsappButton')}
             </WhatsAppButton>
             <SocialLinks>
               <SocialLink

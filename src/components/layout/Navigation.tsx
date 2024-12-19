@@ -125,7 +125,7 @@ const Navigation: React.FC<NavigationProps> = ({ isOpen, onClose }) => {
             <FiX />
           </CloseButton>
         )}
-        <NavLink to="home" spy={true} smooth={true} offset={-100} onClick={onClose}>
+        <NavLink to="hero" spy={true} smooth={true} offset={-100} onClick={onClose}>
           {t('nav.home')}
         </NavLink>
         <NavLink to="about" spy={true} smooth={true} offset={-100} onClick={onClose}>

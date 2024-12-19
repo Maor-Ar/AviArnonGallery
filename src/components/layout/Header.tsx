@@ -7,6 +7,7 @@ import { motion } from 'framer-motion'
 
 interface HeaderContainerProps {
   $isScrolled: boolean;
+  isOpen: boolean;
 }
 
 const HeaderContainer = styled(motion.header)<HeaderContainerProps>`
@@ -18,7 +19,7 @@ const HeaderContainer = styled(motion.header)<HeaderContainerProps>`
   background-color: ${({ $isScrolled }) => $isScrolled ? 'rgba(18, 18, 18, 0.95)' : 'transparent'};
   padding: ${({ theme }) => theme.spacing.md} 0;
   transition: background-color 0.3s ease-in-out;
-  backdrop-filter: ${({ $isScrolled }) => $isScrolled ? 'blur(10px)' : 'none'};
+backdrop-filter: ${({ $isScrolled, isOpen }) => $isScrolled && !isOpen ? 'blur(10px)' : 'none'};
 `
 
 const HeaderContent = styled.div`
@@ -105,7 +106,7 @@ const Header: React.FC<HeaderProps> = () => {
   const closeMenu = () => setIsOpen(false)
 
   return (
-    <HeaderContainer $isScrolled={isScrolled}
+    <HeaderContainer $isScrolled={isScrolled} isOpen={isOpen}
       initial={{ backgroundColor: 'transparent' }}
       animate={{ 
         backgroundColor: isScrolled ? 'rgba(18, 18, 18, 0.95)' : 'transparent',
@@ -113,7 +114,7 @@ const Header: React.FC<HeaderProps> = () => {
       transition={{ duration: 0.3 }}
     >
       <HeaderContent>
-        <Logo href="#home">Avi Arnon</Logo>
+        <Logo href="#hero">Avi Arnon</Logo>
         <MenuButton $isOpen={isOpen} onClick={toggleMenu}>
           <FiMenu />
         </MenuButton>
